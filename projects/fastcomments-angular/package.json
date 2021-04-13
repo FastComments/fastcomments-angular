@@ -1,12 +1,10 @@
 {
   "name": "ngx-fastcomments",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "keywords": ["fastcomments", "fast-comments", "commenting", "live-comments", "embedded comment widget"],
   "peerDependencies": {
     "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14"
-  },
-  "dependencies": {
+    "@angular/core": "^8.2.14",
     "fastcomments-typescript": "^1.5.2"
   }
 }
