@@ -1,8 +1,9 @@
 {
-  "name": "fastcomments-angular",
-  "version": "0.0.1",
+  "name": "ngx-fastcomments",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14"
+    "@angular/core": "^8.2.14",
+    "fastcomments-typescript": "^1.5.2"
   }
 }

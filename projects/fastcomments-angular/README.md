@@ -1,24 +1,22 @@
-# FastcommentsAngular
+# ngx-fastcomments
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+This is an Angular library for FastComments, a live embedded commenting library.
 
-## Code scaffolding
+To get started, we pass a config object for the demo tenant:
 
-Run `ng generate component component-name --project fastcomments-angular` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project fastcomments-angular`.
-> Note: Don't forget to add `--project fastcomments-angular` or else it will be added to the default project in your `angular.json` file. 
+    <lib-fastcomments [config]="{ tenantId: \'demo\' }"></lib-fastcomments>
 
-## Build
+Replace this with your own tenant ID, like so:
 
-Run `ng build fastcomments-angular` to build the project. The build artifacts will be stored in the `dist/` directory.
+    <lib-fastcomments [config]="{ tenantId: \'abc123\' }"></lib-fastcomments>
 
-## Publishing
+Since the configuration can get quite complicated, we can pass in an object reference:
 
-After building your library with `ng build fastcomments-angular`, go to the dist folder `cd dist/fastcomments-angular` and run `npm publish`.
+    <lib-fastcomments [config]="fastcommentsConfig"></lib-fastcomments>
 
-## Running unit tests
+The widget uses change detection, so changing any properties of the configuration object will cause it to be reloaded.
 
-Run `ng test fastcomments-angular` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This allows support for things like toggling dark mode, or pagination, simply by changing the configuration.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+All configuration [in our docs](https://docs.fastcomments.com/guide-customizations-and-configuration.html) is supported. You can find
+the TypeScript definitions for the configuration [on GitHub](https://github.com/FastComments/fastcomments-typescript/blob/main/src/fast-comments-comment-widget-config.ts#L25).
