@@ -4,11 +4,11 @@ This is an Angular library for FastComments, a live embedded commenting library.
 
 To get started, we pass a config object for the demo tenant:
 
-    <lib-fastcomments [config]="{ tenantId: \'demo\' }"></lib-fastcomments>
+    <lib-fastcomments [config]="{ tenantId: 'demo' }"></lib-fastcomments>
 
 Replace this with your own tenant ID, like so:
 
-    <lib-fastcomments [config]="{ tenantId: \'abc123\' }"></lib-fastcomments>
+    <lib-fastcomments [config]="{ tenantId: 'abc123' }"></lib-fastcomments>
 
 Since the configuration can get quite complicated, we can pass in an object reference:
 
