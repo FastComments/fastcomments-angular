@@ -17,6 +17,27 @@ The peer dependency can be added in your tsconfig.json file, for example:
       "node_modules/fastcomments-typescript/src/index.ts"
     ],
 
+Then, add the `FastCommentsModule` to your application:
+
+    import { BrowserModule } from '@angular/platform-browser';
+    import { NgModule } from '@angular/core';
+    
+    import { AppComponent } from './app.component';
+    import { FastCommentsModule } from 'fastcomments-angular'; // switch to this import to test published library version
+    
+    @NgModule({
+      declarations: [
+        AppComponent
+      ],
+      imports: [
+        BrowserModule,
+        FastCommentsModule
+      ],
+      providers: [],
+      bootstrap: [AppComponent]
+    })
+    export class AppModule { }
+
 ## Usage
 
 To get started, we pass a config object for the demo tenant:
