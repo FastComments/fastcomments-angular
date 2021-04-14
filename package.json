@@ -23,7 +23,7 @@
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1",
-    "fastcomments-typescript": "^1.5.2"
+    "fastcomments-typescript": "^1.5.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.3",
