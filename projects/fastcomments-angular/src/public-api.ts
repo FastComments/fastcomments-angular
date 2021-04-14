@@ -1,5 +1,5 @@
 /*
- * Public API Surface of fastcomments-angular
+ * Public API Surface of ngx-fastcomments
  */
 
 export * from './lib/fast-comments.component';

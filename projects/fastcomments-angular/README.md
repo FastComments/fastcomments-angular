@@ -23,7 +23,7 @@ Then, add the `FastCommentsModule` to your application:
     import { NgModule } from '@angular/core';
     
     import { AppComponent } from './app.component';
-    import { FastCommentsModule } from 'fastcomments-angular'; // switch to this import to test published library version
+    import { FastCommentsModule } from 'ngx-fastcomments';
     
     @NgModule({
       declarations: [
