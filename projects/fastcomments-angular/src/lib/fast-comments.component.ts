@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {FastCommentsCommentWidgetConfig} from 'fastcomments-typescript';
 
 enum LoadStatus {
@@ -10,7 +10,6 @@ enum LoadStatus {
 
 interface FastCommentsState {
   status: LoadStatus;
-  widgetId: string | null;
 }
 
 interface WidgetInstance {
@@ -21,21 +20,22 @@ interface WidgetInstance {
 @Component({
   selector: 'lib-fastcomments',
   template: `
-    <div [id]="state.widgetId"></div>
+    <div #fastCommentsElement></div>
   `,
-  styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: []
 })
 export class FastCommentsComponent implements OnInit, OnChanges {
 
   @Input() config: FastCommentsCommentWidgetConfig;
+  @ViewChild('fastCommentsElement', {
+    static: true,
+  }) fastCommentsElement: ElementRef;
   lastWidgetInstance: WidgetInstance | null;
   state: FastCommentsState;
 
   constructor() {
     this.state = {
-      status: LoadStatus.Started,
-      widgetId: `fastcomments-widget-${Math.random()}-${Date.now()}`
+      status: LoadStatus.Started
     };
   }
 
@@ -112,12 +112,10 @@ export class FastCommentsComponent implements OnInit, OnChanges {
   }
 
   instantiateWidget() {
-    if (this.state.widgetId) {
-      const element = document.getElementById(this.state.widgetId);
-      if (element) {
-        // @ts-ignore
-        this.lastWidgetInstance = window.FastCommentsUI(element, this.config);
-      }
+    const element = this.fastCommentsElement.nativeElement;
+    if (element) {
+      // @ts-ignore
+      this.lastWidgetInstance = window.FastCommentsUI(element, this.config);
     }
   }
 
