@@ -22,6 +22,7 @@ interface WidgetInstance {
   template: `
     <div #fastCommentsElement></div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: []
 })
 export class FastCommentsComponent implements OnInit, OnChanges {
