@@ -5,6 +5,6 @@
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
-    "fastcomments-typescript": "^1.5.3"
+    "fastcomments-typescript": "^1.5.6"
   }
 }
