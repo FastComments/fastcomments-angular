@@ -78,7 +78,7 @@ export class FastCommentsComponent implements OnInit, OnChanges {
           try {
             // @ts-ignore
             if (window && !window.FastCommentsUI) {
-              await this.insertScript('https://cdn.fastcomments.com/js/embed.min.js', 'fastcomments-widget-script', window.document.body);
+              await this.insertScript('https://cdn.fastcomments.com/js/embed-v2.min.js', 'fastcomments-widget-script', window.document.body);
             }
             this.state.status = LoadStatus.ScriptLoaded;
             await this.loadInstance();
