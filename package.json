@@ -24,7 +24,7 @@
     "rxjs": "~6.6.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2",
-    "ngx-fastcomments": "^2.2.0",
+    "ngx-fastcomments": "^2.2.1",
     "fastcomments-typescript": "^1.6.21"
   },
   "devDependencies": {
