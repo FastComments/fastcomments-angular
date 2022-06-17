@@ -30,7 +30,8 @@ export class FastCommentsComponent implements OnInit, OnChanges {
   @Input() config: FastCommentsCommentWidgetConfig;
   @ViewChild('fastCommentsElement', {
     static: true,
-  }) fastCommentsElement: ElementRef;
+  })
+  fastCommentsElement: ElementRef;
   lastWidgetInstance: WidgetInstance | null;
   state: FastCommentsState;
 

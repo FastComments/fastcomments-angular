@@ -15,5 +15,9 @@
     "@angular/common": "*",
     "@angular/core": "*",
     "fastcomments-typescript": "^1.6.21"
+  },
+  "devDependencies": {
+    "@angular/common": "^14.0.2",
+    "@angular/core": "^14.0.2"
   }
 }
