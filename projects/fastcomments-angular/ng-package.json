@@ -3,8 +3,5 @@
   "dest": "../../dist/fastcomments-angular",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "whitelistedNonPeerDependencies": [
-    "fastcomments-typescript"
-  ]
+  }
 }
