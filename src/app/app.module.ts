@@ -10,7 +10,9 @@ import { FastCommentsModule } from '../../projects/fastcomments-angular/src/lib/
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule
+  ],
+  exports: [
     FastCommentsModule
   ],
   providers: [],

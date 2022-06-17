@@ -9,7 +9,7 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.ts",
+    "src/**/*.d.ts",
     "node_modules/fastcomments-typescript/src/index.ts"
   ],
   "exclude": [
