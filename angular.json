@@ -163,6 +163,6 @@
           }
         }
       }
-    }},
-  "defaultProject": "fastcomments-angular-workspace"
+    }
+  }
 }
