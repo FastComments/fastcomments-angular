@@ -6,6 +6,7 @@
     "start-demo": "ng serve",
     "build-demo": "ng build",
     "build-library": "ng build fastcomments-angular",
+    "update": "ng update",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
