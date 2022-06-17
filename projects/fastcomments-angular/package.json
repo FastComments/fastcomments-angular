@@ -3,8 +3,8 @@
   "version": "2.1.0",
   "keywords": ["fastcomments", "fast-comments", "commenting", "live-comments", "embedded comment widget"],
   "peerDependencies": {
-    "@angular/common": "^8.2.14",
-    "@angular/core": "^8.2.14",
+    "@angular/common": "*",
+    "@angular/core": "*",
     "fastcomments-typescript": "^1.6.21"
   }
 }
