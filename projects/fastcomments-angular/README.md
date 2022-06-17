@@ -58,3 +58,12 @@ This allows support for things like toggling dark mode, or pagination, simply by
 
 All configuration [in our docs](https://docs.fastcomments.com/guide-customizations-and-configuration.html) is supported. You can find
 the TypeScript definitions for the configuration [on GitHub](https://github.com/FastComments/fastcomments-typescript/blob/main/src/fast-comments-comment-widget-config.ts#L25).
+
+
+### Account Region (ATTENTION: EU Customers)
+
+If your account is located in the EU, set `region = 'eu'` in the widget configuration, for example:
+
+    <lib-fastcomments [config]="{ tenantId: 'abc123', region: 'eu' }"></lib-fastcomments>
+
+Otherwise, you do not have to define `region`.

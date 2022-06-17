@@ -72,13 +72,14 @@ export class FastCommentsComponent implements OnInit, OnChanges {
   }
 
   async loadInstance() {
-    return new Promise(async (resolve, reject) => {
+    return new Promise<void>(async (resolve, reject) => {
       switch (this.state.status) {
         case LoadStatus.Started:
           try {
             // @ts-ignore
             if (window && !window.FastCommentsUI) {
-              await this.insertScript('https://cdn.fastcomments.com/js/embed-v2.min.js', 'fastcomments-widget-script', window.document.body);
+              const src = this.config.region === 'eu' ? 'https://cdn-eu.fastcomments.com/js/embed-v2.min.js' : 'https://cdn.fastcomments.com/js/embed-v2.min.js';
+              await this.insertScript(src, 'fastcomments-widget-script', window.document.body);
             }
             this.state.status = LoadStatus.ScriptLoaded;
             await this.loadInstance();
