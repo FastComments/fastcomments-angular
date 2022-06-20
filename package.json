@@ -23,7 +23,7 @@
     "@angular/router": "^14.0.2",
     "fastcomments-typescript": "^1.6.21",
     "ngx-fastcomments": "^2.3.2",
-    "rxjs": "~6.6.7",
+    "rxjs": "~7.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.6"
   },
