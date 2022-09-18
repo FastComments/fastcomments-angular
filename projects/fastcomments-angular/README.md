@@ -5,7 +5,6 @@ This is an Angular library for FastComments, a live embedded commenting library.
 ## Installation
 
 You will need fastcomments-typescript, which is a peer dependency. Please ensure this is included in your TypeScript compilation.
-In the future, this peer dependency will be moved to @types/fastcomments which will simplify this installation.
 
     npm install fastcomments-typescript --save
     npm install ngx-fastcomments --save
@@ -44,9 +43,11 @@ To get started, we pass a config object for the demo tenant:
 
     <lib-fastcomments [config]="{ tenantId: 'demo' }"></lib-fastcomments>
 
-Replace this with your own tenant ID, like so:
+Replace this with your own `tenantId`, like so:
 
     <lib-fastcomments [config]="{ tenantId: 'abc123' }"></lib-fastcomments>
+
+Your `tenantId` is available [here](https://fastcomments.com/auth/my-account/api) in the FastComments admin area.
 
 Since the configuration can get quite complicated, we can pass in an object reference:
 
@@ -57,8 +58,7 @@ The widget uses change detection, so changing any properties of the configuratio
 This allows support for things like toggling dark mode, or pagination, simply by changing the configuration.
 
 All configuration [in our docs](https://docs.fastcomments.com/guide-customizations-and-configuration.html) is supported. You can find
-the TypeScript definitions for the configuration [on GitHub](https://github.com/FastComments/fastcomments-typescript/blob/main/src/fast-comments-comment-widget-config.ts#L25).
-
+the TypeScript definitions for the configuration [on GitHub](https://github.com/FastComments/fastcomments-typescript/blob/main/src/fast-comments-comment-widget-config.ts).
 
 ### Account Region (ATTENTION: EU Customers)
 
