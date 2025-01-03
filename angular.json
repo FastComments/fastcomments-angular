@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "fastcomments-angular-workspace:build"
+            "buildTarget": "fastcomments-angular-workspace:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "fastcomments-angular-workspace:build:production"
+              "buildTarget": "fastcomments-angular-workspace:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "fastcomments-angular-workspace:build"
+            "buildTarget": "fastcomments-angular-workspace:build"
           }
         },
         "test": {
