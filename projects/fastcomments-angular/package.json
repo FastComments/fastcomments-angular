@@ -14,7 +14,7 @@
   "peerDependencies": {
     "@angular/common": "*",
     "@angular/core": "*",
-    "fastcomments-typescript": "^2.0.0"
+    "fastcomments-typescript": "^3.0.0"
   },
   "devDependencies": {
     "@angular/common": "^18.0.0",

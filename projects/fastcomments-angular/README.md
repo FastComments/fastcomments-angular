@@ -9,13 +9,6 @@ You will need fastcomments-typescript, which is a peer dependency. Please ensure
     npm install fastcomments-typescript --save
     npm install ngx-fastcomments --save
 
-The peer dependency can be added in your tsconfig.json file, for example:
-
-    "include": [
-      "src/**/*.ts",
-      "node_modules/fastcomments-typescript/src/index.ts"
-    ],
-
 Then, add the `FastCommentsModule` to your application:
 
     import { BrowserModule } from '@angular/platform-browser';

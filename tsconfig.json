@@ -28,9 +28,6 @@
     },
     "useDefineForClassFields": false
   },
-  "include": [
-    "node_modules/fastcomments-typescript/src/index.ts"
-  ],
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
