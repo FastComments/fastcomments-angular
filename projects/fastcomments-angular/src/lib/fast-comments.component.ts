@@ -34,6 +34,7 @@ export class FastCommentsComponent implements OnInit, OnChanges {
   fastCommentsElement: ElementRef;
   lastWidgetInstance: WidgetInstance | null;
   state: FastCommentsState;
+  private lastConfigKey: string | null = null;
 
   constructor() {
     this.state = {
@@ -54,9 +55,16 @@ export class FastCommentsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.state.status === LoadStatus.ScriptLoaded) {
+    if ((this.state.status === LoadStatus.ScriptLoaded || this.state.status === LoadStatus.Done) && this.configChanged()) {
       return this.reset();
     }
+  }
+
+  private configChanged(): boolean {
+    const next = JSON.stringify(this.config ?? {}, (_k, v) => typeof v === 'function' ? undefined : v);
+    if (next === this.lastConfigKey) return false;
+    this.lastConfigKey = next;
+    return true;
   }
 
   async insertScript(src: string, id: string, parentElement: Element) {
@@ -119,6 +127,7 @@ export class FastCommentsComponent implements OnInit, OnChanges {
     if (element) {
       // @ts-ignore
       this.lastWidgetInstance = window.FastCommentsUI(element, this.config);
+      this.configChanged();
     }
   }
 
