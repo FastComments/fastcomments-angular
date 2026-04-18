@@ -15,7 +15,7 @@ const sh = (cmd, cwd = ROOT) => {
 };
 
 sh('npm ci');
-sh('npx ng build --base-href ./');
+sh('./node_modules/.bin/ng build --base-href ./');
 
 rmSync(OUT, { recursive: true, force: true });
 renameSync(resolve(ROOT, 'dist/fastcomments-angular-workspace/browser'), OUT);
