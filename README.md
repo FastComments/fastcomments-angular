@@ -1,5 +1,9 @@
 # fastcomments-angular
 
+## Live Demo
+
+Try every widget live at <https://fastcomments.com/commenting-system-for-angular>.
+
 ## Project Structure
 
 This is the root workspace for fastcomments-angular.
