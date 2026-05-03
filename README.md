@@ -4,6 +4,17 @@
 
 Try every widget live at <https://fastcomments.com/commenting-system-for-angular>.
 
+## Installation
+
+[![npm](https://img.shields.io/npm/v/ngx-fastcomments?logo=npm&label=npm&color=cb3837)](https://www.npmjs.com/package/ngx-fastcomments)
+
+```bash
+npm install fastcomments-typescript --save
+npm install ngx-fastcomments --save
+```
+
+See the [ngx-fastcomments README](/projects/fastcomments-angular) for usage.
+
 ## Project Structure
 
 This is the root workspace for fastcomments-angular.
