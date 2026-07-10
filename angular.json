@@ -83,23 +83,6 @@
             "buildTarget": "fastcomments-angular-workspace:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.less"
-            ],
-            "scripts": []
-          }
-        },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
@@ -118,7 +101,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/fastcomments-angular/tsconfig.lib.json",
             "project": "projects/fastcomments-angular/ng-package.json"
@@ -130,11 +113,11 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "main": "projects/fastcomments-angular/src/test.ts",
             "tsConfig": "projects/fastcomments-angular/tsconfig.spec.json",
-            "karmaConfig": "projects/fastcomments-angular/karma.conf.js"
+            "runner": "vitest",
+            "buildTarget": "fastcomments-angular:build"
           }
         },
         "lint": {
