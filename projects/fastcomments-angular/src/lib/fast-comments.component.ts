@@ -18,12 +18,13 @@ interface WidgetInstance {
 }
 
 @Component({
-  selector: 'lib-fastcomments',
-  template: `
+    selector: 'lib-fastcomments',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsComponent implements OnInit, OnChanges {
 

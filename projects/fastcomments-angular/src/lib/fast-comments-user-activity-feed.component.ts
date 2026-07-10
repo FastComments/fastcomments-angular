@@ -12,12 +12,13 @@ export interface FastCommentsUserActivityFeedConfig {
 type WidgetWindow = { FastCommentsUserActivity?: (el: HTMLElement, cfg: FastCommentsUserActivityFeedConfig, cb?: (err: Error | null) => void) => void };
 
 @Component({
-  selector: 'lib-fastcomments-user-activity-feed',
-  template: `
+    selector: 'lib-fastcomments-user-activity-feed',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsUserActivityFeedComponent implements OnInit, OnChanges {
   @Input() config!: FastCommentsUserActivityFeedConfig;

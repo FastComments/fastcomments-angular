@@ -11,12 +11,13 @@ export interface FastCommentsReviewsSummaryConfig {
 type WidgetWindow = { FastCommentsReviewsSummaryWidget?: (el: HTMLElement, cfg: FastCommentsReviewsSummaryConfig) => void };
 
 @Component({
-  selector: 'lib-fastcomments-reviews-summary',
-  template: `
+    selector: 'lib-fastcomments-reviews-summary',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsReviewsSummaryComponent implements OnInit, OnChanges {
   @Input() config!: FastCommentsReviewsSummaryConfig;

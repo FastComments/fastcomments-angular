@@ -9,12 +9,13 @@ interface WidgetInstance {
 type WidgetWindow = { FastCommentsLiveChat?: (el: HTMLElement, cfg: FastCommentsLiveChatWidgetConfig) => WidgetInstance };
 
 @Component({
-  selector: 'lib-fastcomments-live-chat',
-  template: `
+    selector: 'lib-fastcomments-live-chat',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsLiveChatComponent implements OnInit, OnChanges, OnDestroy {
   @Input() config!: FastCommentsLiveChatWidgetConfig;

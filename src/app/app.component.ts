@@ -19,9 +19,10 @@ const THEME_KEY = 'fc-showcase-theme';
 const USER_SET_KEY = THEME_KEY + ':user-set';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.less'],
+    standalone: false
 })
 export class AppComponent implements OnInit {
   title = 'FastComments Angular Showcase';

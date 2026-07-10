@@ -12,12 +12,13 @@ export interface FastCommentsRecentDiscussionsConfig {
 type WidgetWindow = { FastCommentsRecentDiscussionsV2?: (el: HTMLElement, cfg: FastCommentsRecentDiscussionsConfig) => void };
 
 @Component({
-  selector: 'lib-fastcomments-recent-discussions',
-  template: `
+    selector: 'lib-fastcomments-recent-discussions',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsRecentDiscussionsComponent implements OnInit, OnChanges {
   @Input() config!: FastCommentsRecentDiscussionsConfig;
