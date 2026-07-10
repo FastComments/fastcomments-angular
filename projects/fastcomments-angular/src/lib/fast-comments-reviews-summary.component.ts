@@ -8,7 +8,7 @@ export interface FastCommentsReviewsSummaryConfig {
   apiHost?: string;
 }
 
-type WidgetWindow = { FastCommentsReviewsSummaryWidget?: (el: HTMLElement, cfg: FastCommentsReviewsSummaryConfig) => void };
+interface WidgetWindow { FastCommentsReviewsSummaryWidget?: (el: HTMLElement, cfg: FastCommentsReviewsSummaryConfig) => void }
 
 @Component({
     selector: 'lib-fastcomments-reviews-summary',

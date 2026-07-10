@@ -6,7 +6,7 @@ interface WidgetInstance {
   update: (cfg: FastCommentsLiveChatWidgetConfig) => void;
 }
 
-type WidgetWindow = { FastCommentsLiveChat?: (el: HTMLElement, cfg: FastCommentsLiveChatWidgetConfig) => WidgetInstance };
+interface WidgetWindow { FastCommentsLiveChat?: (el: HTMLElement, cfg: FastCommentsLiveChatWidgetConfig) => WidgetInstance }
 
 @Component({
     selector: 'lib-fastcomments-live-chat',

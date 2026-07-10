@@ -7,7 +7,7 @@ export interface FastCommentsTopPagesConfig {
   apiHost?: string;
 }
 
-type WidgetWindow = { FastCommentsTopPagesV2?: (el: HTMLElement, cfg: FastCommentsTopPagesConfig) => void };
+interface WidgetWindow { FastCommentsTopPagesV2?: (el: HTMLElement, cfg: FastCommentsTopPagesConfig) => void }
 
 @Component({
     selector: 'lib-fastcomments-top-pages',

@@ -9,7 +9,7 @@ export interface FastCommentsUserActivityFeedConfig {
   apiHost?: string;
 }
 
-type WidgetWindow = { FastCommentsUserActivity?: (el: HTMLElement, cfg: FastCommentsUserActivityFeedConfig, cb?: (err: Error | null) => void) => void };
+interface WidgetWindow { FastCommentsUserActivity?: (el: HTMLElement, cfg: FastCommentsUserActivityFeedConfig, cb?: (err: Error | null) => void) => void }
 
 @Component({
     selector: 'lib-fastcomments-user-activity-feed',

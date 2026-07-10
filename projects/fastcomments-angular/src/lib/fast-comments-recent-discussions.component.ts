@@ -9,7 +9,7 @@ export interface FastCommentsRecentDiscussionsConfig {
   apiHost?: string;
 }
 
-type WidgetWindow = { FastCommentsRecentDiscussionsV2?: (el: HTMLElement, cfg: FastCommentsRecentDiscussionsConfig) => void };
+interface WidgetWindow { FastCommentsRecentDiscussionsV2?: (el: HTMLElement, cfg: FastCommentsRecentDiscussionsConfig) => void }
 
 @Component({
     selector: 'lib-fastcomments-recent-discussions',

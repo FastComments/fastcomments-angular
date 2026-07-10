@@ -101,28 +101,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "fastcomments-angular-workspace:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "fastcomments-angular-workspace:serve:production"
-            }
           }
         }
       }
@@ -138,13 +122,13 @@
           "options": {
             "tsConfig": "projects/fastcomments-angular/tsconfig.lib.json",
             "project": "projects/fastcomments-angular/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/fastcomments-angular/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -154,15 +138,13 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/fastcomments-angular/tsconfig.lib.json",
-              "projects/fastcomments-angular/tsconfig.spec.json"
+            "lintFilePatterns": [
+              "projects/fastcomments-angular/**/*.ts",
+              "projects/fastcomments-angular/**/*.html"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "eslintConfig": "projects/fastcomments-angular/eslint.config.js"
           }
         }
       }
