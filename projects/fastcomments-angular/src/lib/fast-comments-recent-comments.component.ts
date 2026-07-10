@@ -10,15 +10,16 @@ export interface FastCommentsRecentCommentsConfig {
   apiHost?: string;
 }
 
-type WidgetWindow = { FastCommentsRecentCommentsV2?: (el: HTMLElement, cfg: FastCommentsRecentCommentsConfig) => void };
+interface WidgetWindow { FastCommentsRecentCommentsV2?: (el: HTMLElement, cfg: FastCommentsRecentCommentsConfig) => void }
 
 @Component({
-  selector: 'lib-fastcomments-recent-comments',
-  template: `
+    selector: 'lib-fastcomments-recent-comments',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsRecentCommentsComponent implements OnInit, OnChanges {
   @Input() config!: FastCommentsRecentCommentsConfig;

@@ -1,15 +1,16 @@
 import {ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {FastCommentsCommentCountConfig} from 'fastcomments-typescript';
 
-type WidgetWindow = { FastCommentsCommentCount?: (el: HTMLElement, cfg: FastCommentsCommentCountConfig) => void };
+interface WidgetWindow { FastCommentsCommentCount?: (el: HTMLElement, cfg: FastCommentsCommentCountConfig) => void }
 
 @Component({
-  selector: 'lib-fastcomments-comment-count',
-  template: `
+    selector: 'lib-fastcomments-comment-count',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsCommentCountComponent implements OnInit, OnChanges {
   @Input() config!: FastCommentsCommentCountConfig;

@@ -7,15 +7,16 @@ export interface FastCommentsTopPagesConfig {
   apiHost?: string;
 }
 
-type WidgetWindow = { FastCommentsTopPagesV2?: (el: HTMLElement, cfg: FastCommentsTopPagesConfig) => void };
+interface WidgetWindow { FastCommentsTopPagesV2?: (el: HTMLElement, cfg: FastCommentsTopPagesConfig) => void }
 
 @Component({
-  selector: 'lib-fastcomments-top-pages',
-  template: `
+    selector: 'lib-fastcomments-top-pages',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsTopPagesComponent implements OnInit, OnChanges {
   @Input() config!: FastCommentsTopPagesConfig;

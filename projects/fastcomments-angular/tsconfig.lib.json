@@ -4,11 +4,7 @@
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "inlineSources": true,
-    "types": [],
-    "lib": [
-      "dom",
-      "es2018"
-    ]
+    "types": []
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
@@ -16,7 +12,8 @@
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true,
     "enableResourceInlining": true,
-    "compilationMode": "partial"
+    "compilationMode": "partial",
+    "strictTemplates": false
   },
   "exclude": [
     "src/test.ts",

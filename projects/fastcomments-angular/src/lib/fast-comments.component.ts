@@ -14,25 +14,26 @@ interface FastCommentsState {
 
 interface WidgetInstance {
   destroy: () => void;
-  update: (FastCommentsCommentWidgetConfig) => void;
+  update: (config: FastCommentsCommentWidgetConfig) => void;
 }
 
 @Component({
-  selector: 'lib-fastcomments',
-  template: `
+    selector: 'lib-fastcomments',
+    template: `
     <div #fastCommentsElement></div>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styles: []
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styles: [],
+    standalone: false
 })
 export class FastCommentsComponent implements OnInit, OnChanges {
 
-  @Input() config: FastCommentsCommentWidgetConfig;
+  @Input() config!: FastCommentsCommentWidgetConfig;
   @ViewChild('fastCommentsElement', {
     static: true,
   })
-  fastCommentsElement: ElementRef;
-  lastWidgetInstance: WidgetInstance | null;
+  fastCommentsElement!: ElementRef;
+  lastWidgetInstance: WidgetInstance | null = null;
   state: FastCommentsState;
   private lastConfigKey: string | null = null;
 
@@ -80,35 +81,30 @@ export class FastCommentsComponent implements OnInit, OnChanges {
     });
   }
 
-  async loadInstance() {
-    return new Promise<void>(async (resolve, reject) => {
-      switch (this.state.status) {
-        case LoadStatus.Started:
-          try {
-            // @ts-ignore
-            if (window && !window.FastCommentsUI) {
-              const src = this.config.region === 'eu' ? 'https://cdn-eu.fastcomments.com/js/embed-v2.min.js' : 'https://cdn.fastcomments.com/js/embed-v2.min.js';
-              await this.insertScript(src, 'fastcomments-widget-script', window.document.body);
-            }
-            this.state.status = LoadStatus.ScriptLoaded;
-            await this.loadInstance();
-            resolve();
-          } catch (e) {
-            console.error('FastComments Script Load Failure', e);
-            this.state.status = LoadStatus.Error;
-            reject();
+  async loadInstance(): Promise<void> {
+    switch (this.state.status) {
+      case LoadStatus.Started:
+        try {
+          // @ts-expect-error - FastCommentsUI is injected on window by the embed script
+          if (window && !window.FastCommentsUI) {
+            const src = this.config.region === 'eu' ? 'https://cdn-eu.fastcomments.com/js/embed-v2.min.js' : 'https://cdn.fastcomments.com/js/embed-v2.min.js';
+            await this.insertScript(src, 'fastcomments-widget-script', window.document.body);
           }
-          break;
-        case LoadStatus.ScriptLoaded:
-          this.instantiateWidget();
-          this.state.status = LoadStatus.Done;
-          resolve();
-          break;
-        default:
-          resolve();
-          break;
-      }
-    });
+          this.state.status = LoadStatus.ScriptLoaded;
+          await this.loadInstance();
+        } catch (e) {
+          console.error('FastComments Script Load Failure', e);
+          this.state.status = LoadStatus.Error;
+          throw e;
+        }
+        break;
+      case LoadStatus.ScriptLoaded:
+        this.instantiateWidget();
+        this.state.status = LoadStatus.Done;
+        break;
+      default:
+        break;
+    }
   }
 
   reset() {
@@ -125,7 +121,7 @@ export class FastCommentsComponent implements OnInit, OnChanges {
   instantiateWidget() {
     const element = this.fastCommentsElement.nativeElement;
     if (element) {
-      // @ts-ignore
+      // @ts-expect-error - FastCommentsUI is injected on window by the embed script
       this.lastWidgetInstance = window.FastCommentsUI(element, this.config);
       this.configChanged();
     }

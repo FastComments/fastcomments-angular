@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FastCommentsCommentWidgetConfig } from 'fastcomments-typescript';
 
 type ExampleKey = 'comments' | 'comment-count' | 'live-chat' | 'recent-comments' | 'recent-discussions' | 'top-pages'
   | 'reviews-summary' | 'user-activity-feed'
   | 'callbacks' | 'dark' | 'eu' | 'paginated' | 'simple-sso' | 'secure-sso';
 type Theme = 'light' | 'dark';
-type LogEvent = { id: number; name: string; payload: string; at: string };
+interface LogEvent { id: number; name: string; payload: string; at: string }
 type SSOStatus = 'idle' | 'loading' | 'ready' | 'error';
 
 interface ExampleMeta {
@@ -19,9 +19,11 @@ const THEME_KEY = 'fc-showcase-theme';
 const USER_SET_KEY = THEME_KEY + ':user-set';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.less'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AppComponent implements OnInit {
   title = 'FastComments Angular Showcase';
@@ -412,7 +414,7 @@ export class SecureSsoComponent implements OnInit {
       await navigator.clipboard.writeText(this.currentSnippet.code);
       this.copied = true;
       setTimeout(() => { this.copied = false; }, 1200);
-    } catch (_) {}
+    } catch { /* clipboard API unavailable */ }
   }
 
   select(key: ExampleKey) {

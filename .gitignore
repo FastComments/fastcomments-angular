@@ -11,6 +11,10 @@
 /node_modules
 /projects/fastcomments-angular/node_modules
 
+# The library shares the workspace root's dependencies; a per-project lockfile
+# is vestigial and would be scanned by Dependabot with stale versions.
+/projects/*/package-lock.json
+
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
