@@ -12,26 +12,30 @@
     <nav class="fc-nav" aria-label="Examples">
       <div class="fc-nav__group">
         <div class="fc-nav__heading"><span>01</span><em>Widgets</em></div>
-        <a *ngFor="let item of widgets"
-           href="javascript:void(0)"
-           class="fc-nav__item"
-           [class.is-active]="selected === item.key"
-           (click)="select(item.key)">
-          <span class="fc-nav__item-label">{{ item.label }}</span>
-          <span class="fc-nav__item-hint">{{ item.hint }}</span>
-        </a>
+        @for (item of widgets; track item) {
+          <a
+            href="javascript:void(0)"
+            class="fc-nav__item"
+            [class.is-active]="selected === item.key"
+            (click)="select(item.key)">
+            <span class="fc-nav__item-label">{{ item.label }}</span>
+            <span class="fc-nav__item-hint">{{ item.hint }}</span>
+          </a>
+        }
       </div>
 
       <div class="fc-nav__group">
         <div class="fc-nav__heading"><span>02</span><em>Flows &amp; configuration</em></div>
-        <a *ngFor="let item of flows"
-           href="javascript:void(0)"
-           class="fc-nav__item"
-           [class.is-active]="selected === item.key"
-           (click)="select(item.key)">
-          <span class="fc-nav__item-label">{{ item.label }}</span>
-          <span class="fc-nav__item-hint">{{ item.hint }}</span>
-        </a>
+        @for (item of flows; track item) {
+          <a
+            href="javascript:void(0)"
+            class="fc-nav__item"
+            [class.is-active]="selected === item.key"
+            (click)="select(item.key)">
+            <span class="fc-nav__item-label">{{ item.label }}</span>
+            <span class="fc-nav__item-hint">{{ item.hint }}</span>
+          </a>
+        }
       </div>
     </nav>
 
@@ -61,106 +65,140 @@
         </div>
       </header>
 
-      <div *ngIf="selected === 'comments'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments [config]="baseConfig"></lib-fastcomments>
-      </div>
-
-      <div *ngIf="selected === 'comment-count'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-comment-count [config]="commentCountConfig"></lib-fastcomments-comment-count>
-      </div>
-
-      <div *ngIf="selected === 'live-chat'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-live-chat [config]="liveChatConfig"></lib-fastcomments-live-chat>
-      </div>
-
-      <div *ngIf="selected === 'recent-comments'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-recent-comments [config]="baseConfig"></lib-fastcomments-recent-comments>
-      </div>
-
-      <div *ngIf="selected === 'recent-discussions'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-recent-discussions [config]="baseConfig"></lib-fastcomments-recent-discussions>
-      </div>
-
-      <div *ngIf="selected === 'top-pages'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-top-pages [config]="baseConfig"></lib-fastcomments-top-pages>
-      </div>
-
-      <div *ngIf="selected === 'reviews-summary'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-reviews-summary [config]="reviewsSummaryConfig"></lib-fastcomments-reviews-summary>
-      </div>
-
-      <div *ngIf="selected === 'user-activity-feed'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments-user-activity-feed [config]="userActivityFeedConfig"></lib-fastcomments-user-activity-feed>
-      </div>
-
-      <div *ngIf="selected === 'callbacks'" class="fc-callbacks-grid">
-        <div class="fc-stage__panel fc-stage__panel--light" style="min-width: 0;">
-          <lib-fastcomments [config]="callbacksConfig"></lib-fastcomments>
-        </div>
-        <div class="fc-stage__panel" style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; align-items: center; justify-content: space-between;">
-            <span style="font-family: var(--fc-mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fc-ink-mute);">
-              <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #27be69; margin-right: 8px;"></span>
-              Event log
-            </span>
-            <button class="fc-btn" style="padding: 6px 12px; font-size: 11px;" (click)="clearEvents()">clear</button>
-          </div>
-          <div class="fc-log">
-            <span *ngIf="events.length === 0" class="fc-log__line">&gt; waiting for events...</span>
-            <span *ngFor="let e of events" class="fc-log__line fc-log__line--in">
-              [{{ e.at }}] {{ e.name }} <span style="color: var(--fc-ink-mute);">&middot; {{ e.payload }}</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div *ngIf="selected === 'dark'" class="fc-stage__panel">
-        <div class="fc-toggles">
-          <button class="fc-btn" [class.fc-btn--primary]="!localDark" (click)="setDark(false)">Light</button>
-          <button class="fc-btn" [class.fc-btn--primary]="localDark" (click)="setDark(true)">Dark</button>
-        </div>
-        <div class="fc-demo__mount" [class.is-dark]="localDark">
-          <lib-fastcomments [config]="darkConfig"></lib-fastcomments>
-        </div>
-      </div>
-
-      <div *ngIf="selected === 'eu'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments [config]="euConfig"></lib-fastcomments>
-      </div>
-
-      <div *ngIf="selected === 'paginated'" class="fc-stage__panel" style="padding: 20px;">
-        <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 14px; box-shadow: inset 0 -1px 0 0 var(--fc-border); margin-bottom: 20px; flex-wrap: wrap;">
-          <button class="fc-btn" (click)="paginate(-1)">← prev product</button>
-          <button class="fc-btn fc-btn--primary" (click)="paginate(1)">next product →</button>
-          <div style="font-family: var(--fc-mono); font-size: 13px; color: var(--fc-ink-dim); margin-left: auto;">
-            <span style="color: var(--fc-ink-mute);">product</span>
-            <span style="color: var(--fc-ink);">&nbsp;#{{ productId }}</span>
-          </div>
-        </div>
-        <div class="fc-stage__panel fc-stage__panel--light" style="padding: 20px;">
-          <lib-fastcomments [config]="paginatedConfig"></lib-fastcomments>
-        </div>
-      </div>
-
-      <div *ngIf="selected === 'simple-sso'" class="fc-stage__panel fc-stage__panel--light">
-        <lib-fastcomments [config]="simpleSSOConfig"></lib-fastcomments>
-      </div>
-
-      <div *ngIf="selected === 'secure-sso'">
-        <div *ngIf="secureSSOStatus === 'error'" class="fc-stage__panel" style="border-color: rgba(255, 59, 48, 0.5); background: rgba(255, 59, 48, 0.05); margin-bottom: 18px;">
-          <div style="font-family: var(--fc-mono); font-size: 13px; color: #ff8b85;">
-            Couldn't reach the example SSO server.<br />
-            <span style="color: var(--fc-ink-mute);">
-              Run <code>node-express</code> from
-              <a href="https://github.com/fastcomments/fastcomments-code-examples" target="_blank" rel="noopener" style="color: var(--fc-accent-c); text-decoration: underline dashed;">fastcomments-code-examples</a>
-              on port 3003 to continue.
-            </span>
-          </div>
-        </div>
+      @if (selected === 'comments') {
         <div class="fc-stage__panel fc-stage__panel--light">
-          <lib-fastcomments [config]="secureSSOConfig"></lib-fastcomments>
+          <lib-fastcomments [config]="baseConfig"></lib-fastcomments>
         </div>
-      </div>
+      }
+
+      @if (selected === 'comment-count') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-comment-count [config]="commentCountConfig"></lib-fastcomments-comment-count>
+        </div>
+      }
+
+      @if (selected === 'live-chat') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-live-chat [config]="liveChatConfig"></lib-fastcomments-live-chat>
+        </div>
+      }
+
+      @if (selected === 'recent-comments') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-recent-comments [config]="baseConfig"></lib-fastcomments-recent-comments>
+        </div>
+      }
+
+      @if (selected === 'recent-discussions') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-recent-discussions [config]="baseConfig"></lib-fastcomments-recent-discussions>
+        </div>
+      }
+
+      @if (selected === 'top-pages') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-top-pages [config]="baseConfig"></lib-fastcomments-top-pages>
+        </div>
+      }
+
+      @if (selected === 'reviews-summary') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-reviews-summary [config]="reviewsSummaryConfig"></lib-fastcomments-reviews-summary>
+        </div>
+      }
+
+      @if (selected === 'user-activity-feed') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments-user-activity-feed [config]="userActivityFeedConfig"></lib-fastcomments-user-activity-feed>
+        </div>
+      }
+
+      @if (selected === 'callbacks') {
+        <div class="fc-callbacks-grid">
+          <div class="fc-stage__panel fc-stage__panel--light" style="min-width: 0;">
+            <lib-fastcomments [config]="callbacksConfig"></lib-fastcomments>
+          </div>
+          <div class="fc-stage__panel" style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-family: var(--fc-mono); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fc-ink-mute);">
+                <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #27be69; margin-right: 8px;"></span>
+                Event log
+              </span>
+              <button class="fc-btn" style="padding: 6px 12px; font-size: 11px;" (click)="clearEvents()">clear</button>
+            </div>
+            <div class="fc-log">
+              @if (events.length === 0) {
+                <span class="fc-log__line">&gt; waiting for events...</span>
+              }
+              @for (e of events; track e) {
+                <span class="fc-log__line fc-log__line--in">
+                  [{{ e.at }}] {{ e.name }} <span style="color: var(--fc-ink-mute);">&middot; {{ e.payload }}</span>
+                </span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (selected === 'dark') {
+        <div class="fc-stage__panel">
+          <div class="fc-toggles">
+            <button class="fc-btn" [class.fc-btn--primary]="!localDark" (click)="setDark(false)">Light</button>
+            <button class="fc-btn" [class.fc-btn--primary]="localDark" (click)="setDark(true)">Dark</button>
+          </div>
+          <div class="fc-demo__mount" [class.is-dark]="localDark">
+            <lib-fastcomments [config]="darkConfig"></lib-fastcomments>
+          </div>
+        </div>
+      }
+
+      @if (selected === 'eu') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments [config]="euConfig"></lib-fastcomments>
+        </div>
+      }
+
+      @if (selected === 'paginated') {
+        <div class="fc-stage__panel" style="padding: 20px;">
+          <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 14px; box-shadow: inset 0 -1px 0 0 var(--fc-border); margin-bottom: 20px; flex-wrap: wrap;">
+            <button class="fc-btn" (click)="paginate(-1)">← prev product</button>
+            <button class="fc-btn fc-btn--primary" (click)="paginate(1)">next product →</button>
+            <div style="font-family: var(--fc-mono); font-size: 13px; color: var(--fc-ink-dim); margin-left: auto;">
+              <span style="color: var(--fc-ink-mute);">product</span>
+              <span style="color: var(--fc-ink);">&nbsp;#{{ productId }}</span>
+            </div>
+          </div>
+          <div class="fc-stage__panel fc-stage__panel--light" style="padding: 20px;">
+            <lib-fastcomments [config]="paginatedConfig"></lib-fastcomments>
+          </div>
+        </div>
+      }
+
+      @if (selected === 'simple-sso') {
+        <div class="fc-stage__panel fc-stage__panel--light">
+          <lib-fastcomments [config]="simpleSSOConfig"></lib-fastcomments>
+        </div>
+      }
+
+      @if (selected === 'secure-sso') {
+        <div>
+          @if (secureSSOStatus === 'error') {
+            <div class="fc-stage__panel" style="border-color: rgba(255, 59, 48, 0.5); background: rgba(255, 59, 48, 0.05); margin-bottom: 18px;">
+              <div style="font-family: var(--fc-mono); font-size: 13px; color: #ff8b85;">
+                Couldn't reach the example SSO server.<br />
+                <span style="color: var(--fc-ink-mute);">
+                  Run <code>node-express</code> from
+                  <a href="https://github.com/fastcomments/fastcomments-code-examples" target="_blank" rel="noopener" style="color: var(--fc-accent-c); text-decoration: underline dashed;">fastcomments-code-examples</a>
+                  on port 3003 to continue.
+                </span>
+              </div>
+            </div>
+          }
+          <div class="fc-stage__panel fc-stage__panel--light">
+            <lib-fastcomments [config]="secureSSOConfig"></lib-fastcomments>
+          </div>
+        </div>
+      }
 
       <div class="fc-code-panel">
         <div class="fc-code-panel__head">
