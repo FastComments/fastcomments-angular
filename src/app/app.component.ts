@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FastCommentsCommentWidgetConfig } from 'fastcomments-typescript';
 
 type ExampleKey = 'comments' | 'comment-count' | 'live-chat' | 'recent-comments' | 'recent-discussions' | 'top-pages'
@@ -22,6 +22,7 @@ const USER_SET_KEY = THEME_KEY + ':user-set';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.less'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AppComponent implements OnInit {

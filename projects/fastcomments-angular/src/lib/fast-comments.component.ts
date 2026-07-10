@@ -14,7 +14,7 @@ interface FastCommentsState {
 
 interface WidgetInstance {
   destroy: () => void;
-  update: (FastCommentsCommentWidgetConfig) => void;
+  update: (config: FastCommentsCommentWidgetConfig) => void;
 }
 
 @Component({
@@ -28,12 +28,12 @@ interface WidgetInstance {
 })
 export class FastCommentsComponent implements OnInit, OnChanges {
 
-  @Input() config: FastCommentsCommentWidgetConfig;
+  @Input() config!: FastCommentsCommentWidgetConfig;
   @ViewChild('fastCommentsElement', {
     static: true,
   })
-  fastCommentsElement: ElementRef;
-  lastWidgetInstance: WidgetInstance | null;
+  fastCommentsElement!: ElementRef;
+  lastWidgetInstance: WidgetInstance | null = null;
   state: FastCommentsState;
   private lastConfigKey: string | null = null;
 
