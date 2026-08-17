@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-Try every widget live at <https://fastcomments.com/commenting-system-for-angular>.
+Try every widget live at <https://fastcomments.com/commenting-system-for-angular/>.
 
 ## Installation
 
